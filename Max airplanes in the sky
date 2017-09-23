@@ -1,0 +1,33 @@
+"""
+Definition of Interval.
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+"""
+
+
+class Solution:
+    """
+    @param: airplanes: An interval array
+    @return: Count of airplanes are in the sky.
+    """
+    def countOfAirplanes(self, airplanes):
+        # write your code here
+        time = [];
+        for item in airplanes:
+            time.append((item.start, 1));
+            time.append((item.end, -1));
+        
+        time = sorted(time);
+        print(time);
+        
+        count = 0;
+        most = count;
+        for front, rear in time:
+            count += rear;
+            most = max(most, count);
+            
+        return most;
+            
+            
